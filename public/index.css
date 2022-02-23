@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #3f3f3f;
+    color: white;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+}
+
+.title {
+    font-size: 400%;
+}
+
+.longUrl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.longUrl label {
+    margin-bottom: 1em;
+}
+
+.longUrl input {
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+}
+
+.longUrl #fullUrl {
+    margin-bottom: 1.5em;
+}
+
+.error {
+    color: red;
+}
+
+.shortUrl {
+    color: white;
+    text-decoration: underline;
+}
+
+.shortUrl:link, .shortUrl:visited,  .shortUrl:hover, .shortUrl:active {
+    color: white;
+    text-decoration: none;
+}
+
+.back {
+    color: white;
+    text-decoration: underline;
+}
+
+.back:link, .back:visited,  .back:hover, .back:active {
+    color: white;
+    text-decoration: none;
+}
+
+.url-and-clipboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#clipboard {
+    cursor: pointer;
+}
