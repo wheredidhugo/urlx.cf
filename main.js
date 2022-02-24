@@ -43,7 +43,7 @@ app.post('/url', async (req, res) => {
   if (req.body.fullUrl !== null || req.body.fullUrl !== "")  {
     if (urlRegex.test(req.body.fullUrl) == true) {
       if (urlxcfRegex.test(req.body.fullUrl) == false) {
-        const fullUrl = new urlModel({fullUrl: req.body.fullUrl});
+        const fullUrl = new urlModel({fullUrl: req.body.fullUrl, shortUrl: nanoid()});
         const findFullUrl = await urlModel.findOne({fullUrl: req.body.fullUrl})
         if (findFullUrl == null) {
           fullUrl.save()
