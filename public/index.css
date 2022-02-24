@@ -39,6 +39,7 @@ main {
 }
 
 .longUrl input {
+    border-radius: 7.5px;
     font-family: 'Roboto Mono', monospace;
     text-align: center;
 }
