@@ -38,3 +38,8 @@ document.getElementById("clipboard").onclick = () => {
         document.getElementById("clipboard").classList.add("fa-clipboard");
     }, 1500)
 }
+
+var typed = new Typed('.title', {
+  strings: ['urlx.cf'],
+  typeSpeed: 200
+});

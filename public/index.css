@@ -87,3 +87,8 @@ main {
 #clipboard {
     cursor: pointer;
 }
+
+.typed-cursor {
+    display: none;
+}
+
