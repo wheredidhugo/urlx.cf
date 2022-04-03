@@ -1,9 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const path = require("path");
-const { customAlphabet } = require('nanoid');
+const express = require('express'),
+  rateLimit = require("express-rate-limit"),
+  mongoose = require('mongoose'),
+  path = require("path"),
+  { customAlphabet } = require('nanoid'),
+  app = express();
 require("dotenv").config();
-const app = express();
 
 const nanoid = customAlphabet('1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 8);
 
@@ -29,6 +30,15 @@ const urlRegex = new RegExp("^https?://");
 const urlxcfRegex = new RegExp("^https?://urlx.cf"); 
 const notFound = path.join(__dirname, 'public/404.html');
 
+const urlLimiter = rateLimit({
+	windowMs: 15 * 60 * 1000,
+	max: 50,
+	message: "You're spamming the API, try again in a few minutes.",
+	standardHeaders: true,
+	legacyHeaders: false,
+})
+
+
 app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
@@ -39,7 +49,7 @@ app.get('/:id', async (req, res) => {
   res.redirect(shortUrl.fullUrl)
 });
 
-app.post('/url', async (req, res) => {
+app.post('/url', urlLimiter, async (req, res) => {
   if (req.body.fullUrl !== null || req.body.fullUrl !== "")  {
     if (urlRegex.test(req.body.fullUrl) == true) {
       if (urlxcfRegex.test(req.body.fullUrl) == false) {
